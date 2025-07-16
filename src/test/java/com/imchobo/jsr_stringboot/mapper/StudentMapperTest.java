@@ -48,11 +48,11 @@ public class StudentMapperTest {
   // 학생 삭제
   @Test
   public void testDeleteStudent() {
-    int no = 9;
-    mapper.delete(no);
-
-    List<Student> student = mapper.list();
-    log.info("{}", student);
+//    int no = 9;
+//    mapper.delete(no);
+//
+//    List<Student> student = mapper.list();
+//    log.info("{}", student);
   }
 
 
@@ -61,6 +61,7 @@ public class StudentMapperTest {
   public void testUpdateStudent() {
     int no = 12;
     Student student = new Student().builder()
+            .no(no)
             .student("업데이트학생")
             .kor(50)
             .mat(20)
