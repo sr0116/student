@@ -14,7 +14,11 @@ public interface StudentMapper {
 
   // 학생 한 명 조회
   void selectOne(int no);
+  
 // 삭제(번호 기준으로 )
   void delete(int no);
+
+  // 수정호 기준으로 )
+  void update(Student student);
 
 }

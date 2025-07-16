@@ -21,11 +21,14 @@ public class Student {
   private int sci;
   private int soc;
   private int total;
+  private int no;
 
-  public int Sumtotal() {
+  public int sumtotal() { // 총점
     return kor + mat + eng + sci + soc;
   }
-    private int no;
+  public int avgTotal() { // 총점
+    return (kor + mat + eng + sci + soc) / 5;
+  }
 //  private String id;
 //  private String pw;
 //  private String name;

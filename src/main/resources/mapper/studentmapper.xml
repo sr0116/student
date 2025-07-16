@@ -21,4 +21,12 @@ values
     delete from student where no = #{no}
 </delete>
 
+<update id="update"  parameterType="com.imchobo.jsr_stringboot.domain.Student">
+    update student
+    set
+        student=  #{student}, kor =  #{kor},  mat = #{mat}, eng =  #{eng}, sci =  #{sci}, soc =  #{soc}, total =  #{total}
+    where no =  #{no}
+
+</update>
+
 </mapper>
