@@ -4,29 +4,49 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.imchobo.jsr_stringboot.mapper.StudentMapper">
+<!--별칭?-->
+    <select id="list" resultType="com.imchobo.jsr_stringboot.domain.Student">
+        select *
+        from student
+    </select>
 
-<select id="list"  resultType="com.imchobo.jsr_stringboot.domain.Student" >
-    select * from student
-</select>
+    <insert id="insert" >
+        INSERT INTO student
+            (student, kor, mat, eng, sci, soc)
+        values (#{student}, #{kor}, #{mat}, #{eng}, #{sci}, #{soc})
+    </insert>
 
-<insert id="insert"  parameterType="com.imchobo.jsr_stringboot.domain.Student">
-INSERT INTO student
-    (student, kor, mat, eng, sci, soc, total)
-values
-    (  #{student},  #{kor},  #{mat},  #{eng},  #{sci},  #{soc}, #{total}
-    )
-</insert>
+    <delete id="delete">
+        delete
+        from student
+        where no = #{no}
+    </delete>
 
-<delete id="delete" parameterType="com.imchobo.jsr_stringboot.domain.Student">
-    delete from student where no = #{no}
-</delete>
+    <update id="update">
+        update student
+        set
+            kor    = #{kor},
+            mat    = #{mat},
+            eng    = #{eng},
+            sci    = #{sci},
+            soc    = #{soc}
+        where no = #{no}
+    </update>
+    <select id="selectOne" resultType="com.imchobo.jsr_stringboot.domain.Student">
+        select *
+        from student
+        where no = #{no}
+    </select>
 
-<update id="update"  parameterType="com.imchobo.jsr_stringboot.domain.Student">
-    update student
-    set
-        student=  #{student}, kor =  #{kor},  mat = #{mat}, eng =  #{eng}, sci =  #{sci}, soc =  #{soc}, total =  #{total}
-    where no =  #{no}
+    <select id="scoreAvgSubject"  resultType="com.imchobo.jsr_stringboot.domain.Student">
+        select avg(kor) kor , avg(mat) mat, avg(eng) eng , avg(sci) sci ,avg(soc) soc from student
+    </select>
 
-</update>
+
+
+    <select id="listscoreRank" resultType="com.imchobo.jsr_stringboot.domain.Student">
+        select no, kor, mat, eng, sci, soc , (kor + mat + eng + sci + soc) total
+        from student order by total desc
+    </select>
 
 </mapper>
